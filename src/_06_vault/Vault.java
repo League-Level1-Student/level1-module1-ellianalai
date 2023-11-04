@@ -20,3 +20,9 @@ public class Vault {
 		return guess == secret;
 	}
 }
+class SecretAgent{
+	void findCode(int code) {
+	
+		
+	}
+}
