@@ -44,15 +44,15 @@ import game_tools.GameControlScene;
  * Earth  | 12,756       | 149,600,000       | 365.2         | 1
  * Mars   | 6,792        | 227,900,000       | 687           | 2
  * Jupiter| 142,984      | 778,600,000       | 4,331         | 79
- * Saturn | 120,536      | 1,433,500,000     | 10,747        | 82
+ * Saturn | 120,536      | 1,433,500,000     | 10,747        | 186
  * Uranus | 51,118       | 2,872,500,000     | 30,589        | 27
  * Neptune| 49,528       | 4,495,100,000     | 59,800        | 14
  * https://nssdc.gsfc.nasa.gov/planetary/factsheet/
  */
 
 public class SolarSystem implements GameControlScene {
-    static final int DISPLAY_WIDTH = 1000;
-    static final int DISPLAY_HEIGHT = DISPLAY_WIDTH;
+    static final int DISPLAY_WIDTH = 2000;
+    static final int DISPLAY_HEIGHT = 1000;
     static final int CENTER_X = DISPLAY_WIDTH / 2;
     static final int CENTER_Y = DISPLAY_HEIGHT / 2;
     static final int SUN_RADIUS_PIXELS = (1391 / 2) / 20;
@@ -65,18 +65,17 @@ public class SolarSystem implements GameControlScene {
     int sunX, sunY;
     Long startTimeMs = null;
     Game gameFrame = new Game("Solar System");
-    
-    Planet earth = new Planet(12);
+    Planet mercury = new Planet(4, new Color(94,64,42), 57, 88, 0);
+    Planet venus = new Planet(12, Color.yellow, 108, 224, 0);
+    Planet earth = new Planet(12, Color.blue, 149, 365, 1);
+    Planet mars = new Planet(6, new Color(143,44,11), 227, 687, 2);
+    Planet jupiter = new Planet(142, new Color(201,83,28), 778, 4331, 79);
     
     public SolarSystem() {
         gameFrame.setScene(this);
         gameFrame.start();
         gameFrame.setSize(DISPLAY_WIDTH, DISPLAY_HEIGHT);
         
-        /*
-         * Add Earth's moon
-         */
-        earth.addMoon();
         
         sunX = CENTER_X - SUN_RADIUS_PIXELS;
         sunY = CENTER_Y - SUN_RADIUS_PIXELS;
@@ -118,6 +117,10 @@ public class SolarSystem implements GameControlScene {
          * Add planets here
          */
         earth.draw(g, numDays);
+        mercury.draw(g, numDays);
+        venus.draw(g, numDays);
+        mars.draw(g, numDays);
+        jupiter.draw(g, numDays);
     }
     
     @Override
