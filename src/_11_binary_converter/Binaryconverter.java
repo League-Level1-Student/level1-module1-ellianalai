@@ -13,7 +13,9 @@ import javax.swing.JTextField;
 public class Binaryconverter implements ActionListener{
 
 	JFrame frame = new JFrame();
+	JPanel panel3 = new JPanel();
 	JPanel panel = new JPanel();
+	JPanel panel2 = new JPanel();
 	JTextField textfield = new JTextField(20);
 	JButton button = new JButton("Convert");
 	JLabel label = new JLabel();
@@ -21,11 +23,15 @@ public class Binaryconverter implements ActionListener{
 	public void binary() {
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.add(panel);
+		frame.setTitle("Binary Converter");
+		frame.add(panel3);
 		panel.add(textfield);
 		panel.add(button);
-		panel.add(label);
-		frame.pack();
+		panel2.add(label);
+		panel3.add(panel);
+		panel3.add(panel2);
+		
+		frame.setSize(500, 150);
 		
 		button.addActionListener(this);
 		
@@ -34,7 +40,10 @@ public class Binaryconverter implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		if (arg0.getSource() == button) {
-			label.setText(convert(textfield.getText()));
+				
+			   label.setText("The corresponding ASCII character is " + convert(textfield.getText()));
+			   
+			   frame.setSize(500,150);
 		}
 		
 	}
